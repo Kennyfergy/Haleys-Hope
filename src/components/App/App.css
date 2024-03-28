@@ -169,6 +169,11 @@ input {
     margin: 0;
     padding: 0;
   }
+  .navPrint {
+    background-color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+}
   .container, .formPanel, .customMenu, .assessmentCard, .assessmentContainer{
     padding: 10px; /* Reduced padding */
     margin: 0; /* Minimize margins */
