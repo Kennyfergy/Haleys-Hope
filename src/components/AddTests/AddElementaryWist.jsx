@@ -11,6 +11,9 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Table,
+  TableRow,
+  TableCell,
 } from "@mui/material";
 import "./AddElementaryWist.css";
 
@@ -217,9 +220,8 @@ const AddElementaryWist = () => {
       <h1 className="text-4xl font-bold text-center text-primary-500 my-4">Add WIST 7-11</h1>
 
       <Paper elevation={3} className="p-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        {/* <form onSubmit={handleSubmit} className="space-y-6">
           <Grid container spacing={3}>
-            {/* Date Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Date:</FormLabel>
@@ -237,7 +239,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Examiner ID Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Examiner</FormLabel>
@@ -250,7 +251,6 @@ const AddElementaryWist = () => {
                 </Select>
               </FormControl>
             </Grid>
-            {/* Grade Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Grade:</FormLabel>
@@ -282,14 +282,11 @@ const AddElementaryWist = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            {/* Additional Fields */}
-            {/* Read Regular Words Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Read Regular Words:</FormLabel>
@@ -320,14 +317,12 @@ const AddElementaryWist = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {/* Read Irregular Words Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Read Irregular Words:</FormLabel>
@@ -342,7 +337,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Word Identification Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Word Identification:</FormLabel>
@@ -366,7 +360,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Word Identification Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Word Identification Percentile:</FormLabel>
@@ -381,7 +374,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Word Identification Standard Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Word Identification Standard Score:</FormLabel>
@@ -413,14 +405,12 @@ const AddElementaryWist = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {/* Spell Regular Words Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Spell Regular Words:</FormLabel>
@@ -451,13 +441,11 @@ const AddElementaryWist = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            {/* Spell Irregular Words Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Spell Irregular Words:</FormLabel>
@@ -472,7 +460,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Spelling Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Spelling:</FormLabel>
@@ -496,7 +483,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Spelling Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Spelling Percentile:</FormLabel>
@@ -511,7 +497,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Spelling Standard Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Spelling Standard Score:</FormLabel>
@@ -526,7 +511,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Fundamental Literacy Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Fundamental Literacy:</FormLabel>
@@ -550,7 +534,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Fundamental Literacy Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Fundamental Literacy Percentile:</FormLabel>
@@ -565,7 +548,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Fundamental Literacy Standard Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Fundamental Literacy Standard Score:</FormLabel>
@@ -597,13 +579,11 @@ const AddElementaryWist = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            {/* Pseudo Words Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Pseudo Words:</FormLabel>
@@ -635,13 +615,11 @@ const AddElementaryWist = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            {/* Letter Sounds Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Letter Sounds:</FormLabel>
@@ -656,7 +634,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Sound Symbol Knowledge Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Sound Symbol Knowledge:</FormLabel>
@@ -680,7 +657,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Sound Symbol Knowledge Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Sound Symbol Knowledge Percentile:</FormLabel>
@@ -695,7 +671,6 @@ const AddElementaryWist = () => {
               </FormControl>
             </Grid>
 
-            {/* Sound Symbol Knowledge Standard Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Sound Symbol Knowledge Standard Score:</FormLabel>
@@ -711,6 +686,405 @@ const AddElementaryWist = () => {
             </Grid>
           </Grid>
           <Button type="submit" variant="contained" color="primary" className="mt-4">
+            Submit
+          </Button>
+        </form> */}
+
+<form>
+          <Table size="small">
+            <TableRow>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Date:</FormLabel>
+                  <TextField
+                    type="date"
+                    id="date"
+                    name="date"
+                    value={newWist.date}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                  {validationErrors.date && (
+                    <div className="text-red-500 text-xs italic">
+                      {validationErrors.date}
+                    </div>
+                  )}
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Grade:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="grade"
+                    name="grade"
+                    value={newWist.grade}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Examiner</FormLabel>
+                  <Select
+                    value={selectedExaminerId}
+                    onChange={handleExaminerChange}
+                  >
+                    {users.map((user) => (
+                      <MenuItem key={user.id} value={user.id}>
+                        {user.first_name} {user.last_name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Wist 7-11</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Word Identification</TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Read Regular Words:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="read_regular_words"
+                    name="read_regular_words"
+                    value={newWist.read_regular_words}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Read Irregular Words:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="read_irregular_words"
+                    name="read_irregular_words"
+                    value={newWist.read_irregular_words}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Word Identification:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="word_identification"
+                    name="word_identification"
+                    value={newWist.word_identification}
+                    onChange={handleChange}
+                    variant="filled"
+                    disabled
+                    InputProps={{
+                      readOnly: true, // Make the field read-only
+                    }}
+                    sx={{
+                      "& .MuiInputBase-input.Mui-disabled": {
+                        WebkitTextFillColor: "#000000",
+                      },
+                    }}
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Word Identification Standard Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="word_identification_standard_score"
+                    name="word_identification_standard_score"
+                    value={newWist.word_identification_standard_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Word Identification Percentile:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="word_identification_percentile"
+                    name="word_identification_percentile"
+                    value={newWist.word_identification_percentile}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Spelling</TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Spell Regular Words:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="spell_regular_words"
+                    name="spell_regular_words"
+                    value={newWist.spell_regular_words}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Spell Irregular Words:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="spell_irregular_words"
+                    name="spell_irregular_words"
+                    value={newWist.spell_irregular_words}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Spelling:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="spelling"
+                    name="spelling"
+                    value={newWist.spelling}
+                    onChange={handleChange}
+                    variant="filled"
+                    disabled
+                    InputProps={{
+                      readOnly: true, // Make the field read-only
+                    }}
+                    sx={{
+                      "& .MuiInputBase-input.Mui-disabled": {
+                        WebkitTextFillColor: "#000000",
+                      },
+                    }}
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Spelling Standard Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="spelling_standard_score"
+                    name="spelling_standard_score"
+                    value={newWist.spelling_standard_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Spelling Percentile:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="spelling_percentile"
+                    name="spelling_percentile"
+                    value={newWist.spelling_percentile}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Fundamental Literacy Skills</TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Word Identification:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="word_identification"
+                    name="word_identification"
+                    value={newWist.word_identification}
+                    onChange={handleChange}
+                    variant="filled"
+                    disabled
+                    InputProps={{
+                      readOnly: true, // Make the field read-only
+                    }}
+                    sx={{
+                      "& .MuiInputBase-input.Mui-disabled": {
+                        WebkitTextFillColor: "#000000",
+                      },
+                    }}
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Spelling:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="spelling"
+                    name="spelling"
+                    value={newWist.spelling}
+                    onChange={handleChange}
+                    variant="filled"
+                    disabled
+                    InputProps={{
+                      readOnly: true, // Make the field read-only
+                    }}
+                    sx={{
+                      "& .MuiInputBase-input.Mui-disabled": {
+                        WebkitTextFillColor: "#000000",
+                      },
+                    }}
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Fundamental Literacy:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="fundamental_literacy"
+                    name="fundamental_literacy"
+                    value={newWist.fundamental_literacy}
+                    onChange={handleChange}
+                    variant="filled"
+                    disabled
+                    InputProps={{
+                      readOnly: true, // Make the field read-only
+                    }}
+                    sx={{
+                      "& .MuiInputBase-input.Mui-disabled": {
+                        WebkitTextFillColor: "#000000",
+                      },
+                    }}
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Fundamental Literacy Standard Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="fundamental_literacy_standard_score"
+                    name="fundamental_literacy_standard_score"
+                    value={newWist.fundamental_literacy_standard_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Fundamental Literacy Percentile:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="fundamental_literacy_percentile"
+                    name="fundamental_literacy_percentile"
+                    value={newWist.fundamental_literacy_percentile}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Sound Symbol Knowledge</TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Pseudo Words:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="pseudo_words"
+                    name="pseudo_words"
+                    value={newWist.pseudo_words}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Letter Sounds:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="letter_sounds"
+                    name="letter_sounds"
+                    value={newWist.letter_sounds}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Sound Symbol Knowledge:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="sound_symbol_knowledge"
+                    name="sound_symbol_knowledge"
+                    value={newWist.sound_symbol_knowledge}
+                    onChange={handleChange}
+                    variant="filled"
+                    disabled
+                    InputProps={{
+                      readOnly: true, // Make the field read-only
+                    }}
+                    sx={{
+                      "& .MuiInputBase-input.Mui-disabled": {
+                        WebkitTextFillColor: "#000000",
+                      },
+                    }}
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Sound Symbol Knowledge Standard Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="sound_symbol_knowledge_standard_score"
+                    name="sound_symbol_knowledge_standard_score"
+                    value={newWist.sound_symbol_knowledge_standard_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                {" "}
+                <FormControl fullWidth>
+                  <FormLabel>Sound Symbol Knowledge Percentile:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="sound_symbol_knowledge_percentile"
+                    name="sound_symbol_knowledge_percentile"
+                    value={newWist.sound_symbol_knowledge_percentile}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+            </TableRow>
+          </Table>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className="mt-4"
+          >
             Submit
           </Button>
         </form>
