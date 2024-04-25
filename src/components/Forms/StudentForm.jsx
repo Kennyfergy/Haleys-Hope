@@ -42,7 +42,7 @@ const StudentForm = () => {
     barton_c_date: null,
     coach_id: "",
     is_active: true,
-    intake_grade: "",
+    intake_grade: null,
   });
   const handleGoBack = () => {
     history.push(`/students`);
@@ -78,7 +78,7 @@ const StudentForm = () => {
       barton_c_date: null,
       coach_id: "",
       is_active: true,
-      intake_grade: "",
+      intake_grade: null,
     });
     dispatch({ type: "SHOW_SNACKBAR", payload: { message: "Student Added", severity: "success" } });
 

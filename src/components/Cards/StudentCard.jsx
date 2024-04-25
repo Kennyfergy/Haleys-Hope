@@ -288,7 +288,7 @@ const StudentCard = () => {
                   value={formData.grade}
                   onChange={handleInputChange}
                   placeholder={validationErrors.grade || "Grade"}
-                  className={validationErrors.grade ? "error-input" : ""}
+                  className={validationErrors.grade ? "error-input" : null}
                 />
 
                 <Label htmlFor="intakeGrade">Intake Grade</Label>
@@ -298,7 +298,7 @@ const StudentCard = () => {
                   value={formData.intake_grade}
                   onChange={handleInputChange}
                   placeholder={validationErrors.intake_grade || "Intake Grade"}
-                  className={validationErrors.intake_grade ? "error-input" : ""}
+                  className={validationErrors.intake_grade ? "error-input" : null}
                 />
 
                 <Label htmlFor="school">School</Label>
@@ -314,7 +314,7 @@ const StudentCard = () => {
                   value={formData.dob}
                   onChange={handleInputChange}
                   placeholder={validationErrors.dob || "Date of Birth"}
-                  className={validationErrors.dob ? "error-input" : ""}
+                  className={validationErrors.dob ? "error-input" : null}
                 />
 
                 <Label htmlFor="city">City</Label>
@@ -350,7 +350,7 @@ const StudentCard = () => {
                   value={formData.start_date}
                   onChange={handleInputChange}
                   placeholder={validationErrors.start_date || "Intake Date"}
-                  className={validationErrors.start_date ? "error-input" : ""}
+                  className={validationErrors.start_date ? "error-input" : null}
                 />
 
                 <Label htmlFor="is active">Current or Archive</Label>
