@@ -72,7 +72,9 @@ const AssessmentContainer = () => {
   }));
   return (
     <>
+    
       <div style={{ display: "flex" }}>
+
         {/* FIGURE OUT HOW TO GET BACK TO THE STUDENT DETAIL VIEW */}
         <Button
           onClick={goBack}
@@ -82,8 +84,17 @@ const AssessmentContainer = () => {
           Back to Student
         </Button>
         <PrintButton />
+        
       </div>
+      <img
+            src="/assets/images/site-logo.png"
+            width={180}
+            height={180}
+            className="logo-image print-logo"
+            alt="Haley's Hope Logo"
+          />
       <div style={{ display: "flex", justifyContent: "center", gap: "50px" }}>
+        
         <div
           style={{
             display: "flex",

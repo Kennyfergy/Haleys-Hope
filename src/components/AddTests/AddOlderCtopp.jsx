@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import {
   TextField,
   Button,
@@ -11,7 +14,11 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Table,
+  TableCell,
+  TableRow,
 } from "@mui/material";
+import { Bold } from "lucide-react";
 
 //component to add a new Secondary ctopp test
 const AddOlderCtopp = () => {
@@ -21,7 +28,9 @@ const AddOlderCtopp = () => {
   const users = useSelector((store) => store.allUsersReducer.users);
 
   const [selectedExaminerId, setSelectedExaminerId] = useState("");
-  const studentGrade = useSelector((store) => store.studentReducer.Details.grade);
+  const studentGrade = useSelector(
+    (store) => store.studentReducer.Details.grade
+  );
 
   const [validationErrors, setValidationErrors] = useState({
     //state for validation errors
@@ -132,7 +141,10 @@ const AddOlderCtopp = () => {
       type: "ADD_OLDER_CTOPP",
       payload: submissionData,
     });
-    dispatch({ type: "SHOW_SNACKBAR", payload: { message: "Test added", severity: "success" } });
+    dispatch({
+      type: "SHOW_SNACKBAR",
+      payload: { message: "Test added", severity: "success" },
+    });
 
     history.push(`/students/${student.id}`);
     //history.push back to student details
@@ -143,12 +155,14 @@ const AddOlderCtopp = () => {
       <Button variant="outlined" onClick={handleGoBack} className="mb-4">
         GO BACK
       </Button>
-      <h1 className="text-4xl font-bold text-center text-primary-500 my-4">Add CTOPP 7-24 </h1>
+      <h1 className="text-4xl font-bold text-center text-primary-500 my-4">
+        Add CTOPP 7-24{" "}
+      </h1>
 
       <Paper elevation={3} className="p-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        {/* here!!!! */}
+        {/* <form onSubmit={handleSubmit} className="space-y-6">
           <Grid container spacing={3}>
-            {/* Date Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Date:</FormLabel>
@@ -165,11 +179,13 @@ const AddOlderCtopp = () => {
               </FormControl>
             </Grid>
 
-            {/* Examiner ID Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Examiner</FormLabel>
-                <Select value={selectedExaminerId} onChange={handleExaminerChange}>
+                <Select
+                  value={selectedExaminerId}
+                  onChange={handleExaminerChange}
+                >
                   {users.map((user) => (
                     <MenuItem key={user.id} value={user.id}>
                       {user.first_name} {user.last_name}
@@ -178,7 +194,6 @@ const AddOlderCtopp = () => {
                 </Select>
               </FormControl>
             </Grid>
-            {/* Grade Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Grade:</FormLabel>
@@ -192,7 +207,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Elision Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Elision Scaled Score:</FormLabel>
@@ -206,7 +220,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Blending Words Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Blending Words Scaled Score:</FormLabel>
@@ -220,7 +233,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Phoneme Isolation Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Phoneme Isolation Scaled Score:</FormLabel>
@@ -234,7 +246,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Memory for Digits Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Memory for Digits Scaled Score:</FormLabel>
@@ -248,7 +259,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Nonword Repetition Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Nonword Repetition Scaled Score:</FormLabel>
@@ -262,7 +272,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Rapid Digit Naming Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Rapid Digit Naming Scaled Score:</FormLabel>
@@ -276,7 +285,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Rapid Letter Naming Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Rapid Letter Naming Scaled Score:</FormLabel>
@@ -290,7 +298,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Blending Nonwords Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Blending Nonwords Scaled Score:</FormLabel>
@@ -304,7 +311,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Segmenting Nonwords Scaled Score Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Segmenting Nonwords Scaled Score:</FormLabel>
@@ -328,21 +334,22 @@ const AddOlderCtopp = () => {
                   value={newCtopp.phonological_awareness_descriptor || ""}
                   label="phonological_awareness_descriptor"
                   onChange={(event) =>
-                    setNewCtopp({ ...newCtopp, phonological_awareness_descriptor: event.target.value })
+                    setNewCtopp({
+                      ...newCtopp,
+                      phonological_awareness_descriptor: event.target.value,
+                    })
                   }
                   variant="outlined"
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {/* Phonological Awareness Composite Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Phonological Awareness Composite:</FormLabel>
@@ -366,21 +373,22 @@ const AddOlderCtopp = () => {
                   value={newCtopp.phonological_memory_descriptor || ""}
                   label="phonological_memory_descriptor"
                   onChange={(event) =>
-                    setNewCtopp({ ...newCtopp, phonological_memory_descriptor: event.target.value })
+                    setNewCtopp({
+                      ...newCtopp,
+                      phonological_memory_descriptor: event.target.value,
+                    })
                   }
                   variant="outlined"
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {/* Phonological Memory Composite Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Phonological Memory Composite:</FormLabel>
@@ -404,21 +412,22 @@ const AddOlderCtopp = () => {
                   value={newCtopp.rapid_symbolic_naming_descriptor || ""}
                   label="rapid_symbolic_naming_descriptor"
                   onChange={(event) =>
-                    setNewCtopp({ ...newCtopp, rapid_symbolic_naming_descriptor: event.target.value })
+                    setNewCtopp({
+                      ...newCtopp,
+                      rapid_symbolic_naming_descriptor: event.target.value,
+                    })
                   }
                   variant="outlined"
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {/* Rapid Symbolic Naming Composite Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Rapid Symbolic Naming Composite:</FormLabel>
@@ -435,28 +444,31 @@ const AddOlderCtopp = () => {
 
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
-                <FormLabel>&lt; or &gt; for Alt Phonological Awareness</FormLabel>
+                <FormLabel>
+                  &lt; or &gt; for Alt Phonological Awareness
+                </FormLabel>
                 <Select
                   labelId="rapid-symbolic-naming-descriptor-label"
                   id="alt_phonological_awareness_descriptor"
                   value={newCtopp.alt_phonological_awareness_descriptor || ""}
                   label="alt_phonological_awareness_descriptor"
                   onChange={(event) =>
-                    setNewCtopp({ ...newCtopp, alt_phonological_awareness_descriptor: event.target.value })
+                    setNewCtopp({
+                      ...newCtopp,
+                      alt_phonological_awareness_descriptor: event.target.value,
+                    })
                   }
                   variant="outlined"
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>{" "}
-                  {/* Optional: Allow no selection */}
                   <MenuItem value="<">&lt;</MenuItem>
                   <MenuItem value=">">&gt;</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {/* Alt Phonological Awareness Composite Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Alt Phonological Awareness Composite:</FormLabel>
@@ -470,7 +482,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Phonological Awareness Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Phonological Awareness Percentile:</FormLabel>
@@ -484,7 +495,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Phonological Memory Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Phonological Memory Percentile:</FormLabel>
@@ -498,7 +508,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Rapid Symbolic Naming Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Rapid Symbolic Naming Percentile:</FormLabel>
@@ -512,7 +521,6 @@ const AddOlderCtopp = () => {
                 />
               </FormControl>
             </Grid>
-            {/* Alt Phonological Awareness Percentile Field */}
             <Grid item xs={12} md={4}>
               <FormControl fullWidth>
                 <FormLabel>Alt Phonological Awareness Percentile:</FormLabel>
@@ -527,7 +535,317 @@ const AddOlderCtopp = () => {
               </FormControl>
             </Grid>
           </Grid>
-          <Button type="submit" variant="contained" color="primary" className="mt-4">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className="mt-4"
+          >
+            Submit
+          </Button>
+        </form> */}
+        {/* here!!!! */}
+        <form>
+          <Table size="small">
+            <TableRow>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Date:</FormLabel>
+                  <TextField
+                    type="date"
+                    id="date"
+                    name="date"
+                    value={newCtopp.date}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                  {validationErrors.date && (
+                    <div className="text-red-500 text-xs italic">
+                      {validationErrors.date}
+                    </div>
+                  )}
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Grade:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="grade"
+                    name="grade"
+                    value={newCtopp.grade}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Examiner</FormLabel>
+                  <Select
+                    value={selectedExaminerId}
+                    onChange={handleExaminerChange}
+                  >
+                    {users.map((user) => (
+                      <MenuItem key={user.id} value={user.id}>
+                        {user.first_name} {user.last_name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Ctopp 7-24 </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Phonological Awareness</TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Elision Scaled Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="elison_scaled_score"
+                    name="elison_scaled_score"
+                    value={newCtopp.elison_scaled_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Blending Words Scaled Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="blending_words_scaled_score"
+                    name="blending_words_scaled_score"
+                    value={newCtopp.blending_words_scaled_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Phoneme Isolation Scaled Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="phoneme_isolation_scaled_score"
+                    name="phoneme_isolation_scaled_score"
+                    value={newCtopp.phoneme_isolation_scaled_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Phonological Awareness Composite:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="phonological_awareness_composite"
+                    name="phonological_awareness_composite"
+                    value={newCtopp.phonological_awareness_composite}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Phonological Awareness Percentile:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="phonological_awareness_percentile"
+                    name="phonological_awareness_percentile"
+                    value={newCtopp.phonological_awareness_percentile}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell> Phonological Memory</TableCell>
+              <TableCell></TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Memory for Digits Scaled Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="memory_for_digits_scaled_score"
+                    name="memory_for_digits_scaled_score"
+                    value={newCtopp.memory_for_digits_scaled_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Nonword Repetition Scaled Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="nonword_repetition_scaled_score"
+                    name="nonword_repetition_scaled_score"
+                    value={newCtopp.nonword_repetition_scaled_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Phonological Memory Composite:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="phonological_memory_composite"
+                    name="phonological_memory_composite"
+                    value={newCtopp.phonological_memory_composite}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Phonological Memory Percentile:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="phonological_memory_percentile"
+                    name="phonological_memory_percentile"
+                    value={newCtopp.phonological_memory_percentile}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Rapid Symbolic Naming </TableCell>
+              <TableCell> </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Rapid Digit Naming Scaled Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="rapid_digit_naming_scaled_score"
+                    name="rapid_digit_naming_scaled_score"
+                    value={newCtopp.rapid_digit_naming_scaled_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Rapid Letter Naming Scaled Score:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="rapid_letter_naming_scaled_score"
+                    name="rapid_letter_naming_scaled_score"
+                    value={newCtopp.rapid_letter_naming_scaled_score}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Rapid Symbolic Naming Composite:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="rapid_symbolic_naming_composite"
+                    name="rapid_symbolic_naming_composite"
+                    value={newCtopp.rapid_symbolic_naming_composite}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <FormControl fullWidth>
+                  <FormLabel>Rapid Symbolic Naming Percentile:</FormLabel>
+                  <TextField
+                    type="number"
+                    id="rapid_symbolic_naming_percentile"
+                    name="rapid_symbolic_naming_percentile"
+                    value={newCtopp.rapid_symbolic_naming_percentile}
+                    onChange={handleChange}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Supplemental</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Alt. Phonological Awareness</TableCell>
+              <TableCell></TableCell>
+              <TableCell>
+              <FormControl fullWidth>
+                <FormLabel>Blending Nonwords Scaled Score:</FormLabel>
+                <TextField
+                  type="number"
+                  id="blending_nonwords_scaled_score"
+                  name="blending_nonwords_scaled_score"
+                  value={newCtopp.blending_nonwords_scaled_score}
+                  onChange={handleChange}
+                  variant="outlined"
+                />
+              </FormControl>
+              </TableCell>
+              <TableCell>
+              <FormControl fullWidth>
+                <FormLabel>Segmenting Nonwords Scaled Score:</FormLabel>
+                <TextField
+                  type="number"
+                  id="segmenting_nonwords_scaled_score"
+                  name="segmenting_nonwords_scaled_score"
+                  value={newCtopp.segmenting_nonwords_scaled_score}
+                  onChange={handleChange}
+                  variant="outlined"
+                />
+              </FormControl>
+              </TableCell>
+              <TableCell>
+              <FormControl fullWidth>
+                <FormLabel>Alt Phonological Awareness Composite:</FormLabel>
+                <TextField
+                  type="number"
+                  id="alt_phonological_awareness_composite"
+                  name="alt_phonological_awareness_composite"
+                  value={newCtopp.alt_phonological_awareness_composite}
+                  onChange={handleChange}
+                  variant="outlined"
+                />
+              </FormControl>
+              </TableCell>
+              <TableCell>
+              <FormControl fullWidth>
+                <FormLabel>Alt Phonological Awareness Percentile:</FormLabel>
+                <TextField
+                  type="number"
+                  id="alt_phonological_awareness_percentile"
+                  name="alt_phonological_awareness_percentile"
+                  value={newCtopp.alt_phonological_awareness_percentile}
+                  onChange={handleChange}
+                  variant="outlined"
+                />
+              </FormControl>
+              </TableCell>
+
+            </TableRow>
+          </Table>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className="mt-4"
+          >
             Submit
           </Button>
         </form>

@@ -94,17 +94,17 @@ const StudentCard = () => {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
-    grade: "",
-    intake_grade: "",
+    grade: null,
+    intake_grade: null,
     school: "",
     gender: "",
-    dob: "",
+    dob: null,
     city: "",
     state: "",
     barton_c_date: null,
     barton_c: true,
     on_site: true,
-    start_date: "",
+    start_date: null,
     is_active: "",
     coach_id: "",
   });
@@ -115,17 +115,17 @@ const StudentCard = () => {
       const studentData = {
         first_name: student.first_name || "",
         last_name: student.last_name || "",
-        grade: student.grade || "",
-        intake_grade: student.intake_grade || "",
+        grade: student.grade || null,
+        intake_grade: student.intake_grade || null,
         school: student.school || "",
         gender: student.gender || "",
         dob: student.dob ? student.dob.split("T")[0] : "",
         city: student.city || "",
         state: student.state || "",
-        barton_c_date: student.barton_c_date ? student.barton_c_date.split("T")[0] : "",
+        barton_c_date: student.barton_c_date ? student.barton_c_date.split("T")[0] : null,
         barton_c: student.barton_c || true,
         on_site: student.on_site || true,
-        start_date: student.start_date ? student.start_date.split("T")[0] : "",
+        start_date: student.start_date ? student.start_date.split("T")[0] : null,
         is_active: student.is_active || true,
         coach_id: student.coach_id || "",
       };
@@ -288,7 +288,7 @@ const StudentCard = () => {
                   value={formData.grade}
                   onChange={handleInputChange}
                   placeholder={validationErrors.grade || "Grade"}
-                  className={validationErrors.grade ? "error-input" : ""}
+                  className={validationErrors.grade ? "error-input" : null}
                 />
 
                 <Label htmlFor="intakeGrade">Intake Grade</Label>
@@ -298,7 +298,7 @@ const StudentCard = () => {
                   value={formData.intake_grade}
                   onChange={handleInputChange}
                   placeholder={validationErrors.intake_grade || "Intake Grade"}
-                  className={validationErrors.intake_grade ? "error-input" : ""}
+                  className={validationErrors.intake_grade ? "error-input" : null}
                 />
 
                 <Label htmlFor="school">School</Label>
@@ -314,7 +314,7 @@ const StudentCard = () => {
                   value={formData.dob}
                   onChange={handleInputChange}
                   placeholder={validationErrors.dob || "Date of Birth"}
-                  className={validationErrors.dob ? "error-input" : ""}
+                  className={validationErrors.dob ? "error-input" : null}
                 />
 
                 <Label htmlFor="city">City</Label>
@@ -350,7 +350,7 @@ const StudentCard = () => {
                   value={formData.start_date}
                   onChange={handleInputChange}
                   placeholder={validationErrors.start_date || "Intake Date"}
-                  className={validationErrors.start_date ? "error-input" : ""}
+                  className={validationErrors.start_date ? "error-input" : null}
                 />
 
                 <Label htmlFor="is active">Current or Archive</Label>

@@ -421,7 +421,6 @@ const AddGort = () => {
           <TableCell>
           
           </TableCell>
-
             <TableCell>SUM SS</TableCell>
             <TableCell>ORI %ile</TableCell>
             <TableCell>ORI</TableCell>
